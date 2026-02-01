@@ -20,7 +20,7 @@ export const refreshTokenSchema = z.object({
   refreshToken: z.string(),
 })
 
-// Magic! แปลง Zod Schema เป็น NestJS DTO class
+// Magic แปลง Zod Schema เป็น NestJS DTO class
 export class AuthDto extends createZodDto(authSchema) {}
 export class LoginDto extends createZodDto(loginSchema) {}
 export class RefreshTokenDto extends createZodDto(refreshTokenSchema) {}
