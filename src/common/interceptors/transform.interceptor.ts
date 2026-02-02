@@ -39,8 +39,10 @@ export class TransformInterceptor<T> implements NestInterceptor<
         const dataObj = data as { message?: string; data?: T }
         const message = dataObj?.message || 'Success'
         const finalData = (
-          dataObj?.message ? dataObj.data || dataObj : data
-        ) as T
+          dataObj?.message
+            ? dataObj.data // ถ้ามี message เอา data ข้างใน
+            : data
+        ) as T // ถ้าไม่มี message ถือว่าทั้งก้อนเป็น data
 
         // ประกอบร่าง!
         return {
